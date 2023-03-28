@@ -61,6 +61,8 @@ body {
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	color: #3d3d3d;
+	background-color: #fffef8;
 }
 
 header {
@@ -79,7 +81,7 @@ h1 {
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C;
+	color: #b1663c;
 }
 
 h1 > span {
@@ -92,7 +94,7 @@ h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154;
+	color: #1d6154;
 }
 
 nav ul {
@@ -112,7 +114,7 @@ nav img[src='./assets/icons/instagram.png'] {
 }
 
 li:hover, a:hover {
-	color: #B1663C;
+	color: #b1663c;
 }
 
 a {
@@ -170,20 +172,20 @@ a {
 .gallery-filter button {
 	font-family: 'Syne';
 	font-weight: 700;
-	color: #1D6154;
-	background-color: white;
+	color: #1d6154;
+	background-color: #fffef8;
 	margin : 2rem 0 3rem 0;
 	padding: 0 1rem 0 1rem;
 	height: 2.5rem;
 	min-width: 8rem;
 	text-align: center;
-	border: 0.1rem solid #1D6154;
+	border: 0.1rem solid #1d6154;
 	border-radius: 60px;
 }
 
 .gallery-filter button:hover {
 	cursor: pointer;
-	box-shadow: 0.05rem 0.05rem 0.05rem #1D6154;
+	box-shadow: 0.05rem 0.05rem 0.05rem #1d6154;
 }
 
 .gallery img {
@@ -230,7 +232,7 @@ input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
-	background-color: #1D6154;
+	background-color: #1d6154;
 	margin : 2em auto;
 	width: 180px;
 	text-align: center;
@@ -241,8 +243,12 @@ input[type="submit"]:hover{
 	cursor: pointer;
 }
 
+footer {
+	background-color: white;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em;
+	padding: 2em;
 }

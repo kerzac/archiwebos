@@ -38,10 +38,10 @@ filterAll.addEventListener('click', () => {
 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
-        filter.style.backgroundColor = 'white';
-        filter.style.color = '#1D6154';
+        filter.style.backgroundColor = '#fffef8';
+        filter.style.color = '#1d6154';
     });
-    filterAll.style.backgroundColor = '#1D6154';
+    filterAll.style.backgroundColor = '#1d6154';
     filterAll.style.color = 'white';
 
     const galleryWork = document.querySelector('.gallery');
@@ -55,10 +55,10 @@ filterObject.addEventListener('click', () => {
 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
-        filter.style.backgroundColor = 'white';
-        filter.style.color = '#1D6154';
+        filter.style.backgroundColor = '#fffef8';
+        filter.style.color = '#1d6154';
     });
-    filterObject.style.backgroundColor = '#1D6154';
+    filterObject.style.backgroundColor = '#1d6154';
     filterObject.style.color = 'white';
 
     const galleryWork = document.querySelector('.gallery');
@@ -72,10 +72,10 @@ filterAppartment.addEventListener('click', () => {
 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
-        filter.style.backgroundColor = 'white';
-        filter.style.color = '#1D6154';
+        filter.style.backgroundColor = '#fffef8';
+        filter.style.color = '#1d6154';
     });
-    filterAppartment.style.backgroundColor = '#1D6154';
+    filterAppartment.style.backgroundColor = '#1d6154';
     filterAppartment.style.color = 'white';
 
     const galleryWork = document.querySelector('.gallery');
@@ -89,10 +89,10 @@ filterHotel.addEventListener('click', () => {
 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
-        filter.style.backgroundColor = 'white';
-        filter.style.color = '#1D6154';
+        filter.style.backgroundColor = '#fffef8';
+        filter.style.color = '#1d6154';
     });
-    filterHotel.style.backgroundColor = '#1D6154';
+    filterHotel.style.backgroundColor = '#1d6154';
     filterHotel.style.color = 'white';
 
     const galleryWork = document.querySelector('.gallery');
