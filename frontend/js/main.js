@@ -2,9 +2,6 @@
     fetch works from api and generate them
 */
 
-const works =  await fetch('http://localhost:5678/api/works')
-                    .then((response) => response.json());
-
 function generateWorks (works) {
     for (let i = 0; i < works.length; i++) {
         const galleryWork = document.querySelector('.gallery');
@@ -21,81 +18,60 @@ function generateWorks (works) {
     }
 }
 
+const works =  await fetch('http://localhost:5678/api/works')
+                    .then((response) => response.json());
+
 generateWorks(works);
 
 /*
     create funtionnal filtering buttons
 */
 
-const filterAll = document.querySelector('.filter-all');
-const filterObject = document.querySelector('.filter-object');
-const filterAppartment = document.querySelector('.filter-appartment');
-const filterHotel = document.querySelector('.filter-hotel');
-
-// display all works
-filterAll.addEventListener('click', () => {
-    const filterWork = works.filter((work) => work);
-
+function manageButtonsColor (filter) { 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
         filter.style.backgroundColor = '#fffef8';
         filter.style.color = '#1d6154';
     });
-    filterAll.style.backgroundColor = '#1d6154';
-    filterAll.style.color = 'white';
+    filter.style.backgroundColor = '#1d6154';
+    filter.style.color = 'white';
+}
 
+function emptyGallery () {
     const galleryWork = document.querySelector('.gallery');
     galleryWork.innerHTML='';
+}
+
+function filterGallery(filter, filterWork) {
+    manageButtonsColor(filter);
+    emptyGallery();
     generateWorks(filterWork);
+}
+
+// display all works
+const filterAll = document.querySelector('.filter-all');
+filterAll.addEventListener('click', () => {
+    const filterWork = works.filter((work) => work);
+    filterGallery(filterAll, filterWork);
 });
 
 // display 'objects' works
+const filterObject = document.querySelector('.filter-object');
 filterObject.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 1);
-
-    const filters = document.querySelectorAll('.filter');
-    filters.forEach((filter) => {
-        filter.style.backgroundColor = '#fffef8';
-        filter.style.color = '#1d6154';
-    });
-    filterObject.style.backgroundColor = '#1d6154';
-    filterObject.style.color = 'white';
-
-    const galleryWork = document.querySelector('.gallery');
-    galleryWork.innerHTML='';
-    generateWorks(filterWork);
+    filterGallery(filterObject, filterWork);
 });
 
 // display 'appartment' works
+const filterAppartment = document.querySelector('.filter-appartment');
 filterAppartment.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 2);
-
-    const filters = document.querySelectorAll('.filter');
-    filters.forEach((filter) => {
-        filter.style.backgroundColor = '#fffef8';
-        filter.style.color = '#1d6154';
-    });
-    filterAppartment.style.backgroundColor = '#1d6154';
-    filterAppartment.style.color = 'white';
-
-    const galleryWork = document.querySelector('.gallery');
-    galleryWork.innerHTML='';
-    generateWorks(filterWork);
+    filterGallery(filterAppartment, filterWork);
 });
 
 // display 'hotel & restaurant' works
+const filterHotel = document.querySelector('.filter-hotel');
 filterHotel.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 3);
-
-    const filters = document.querySelectorAll('.filter');
-    filters.forEach((filter) => {
-        filter.style.backgroundColor = '#fffef8';
-        filter.style.color = '#1d6154';
-    });
-    filterHotel.style.backgroundColor = '#1d6154';
-    filterHotel.style.color = 'white';
-
-    const galleryWork = document.querySelector('.gallery');
-    galleryWork.innerHTML='';
-    generateWorks(filterWork);
+    filterGallery(filterHotel, filterWork);
 });
