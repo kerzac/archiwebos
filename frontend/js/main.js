@@ -3,9 +3,10 @@
 */
 
 function generateWorks (works) {
-    for (let i = 0; i < works.length; i++) {
-        const galleryWork = document.querySelector('.gallery');
+    const galleryWork = document.querySelector('.gallery');
+    galleryWork.innerHTML='';
 
+    for (let i = 0; i < works.length; i++) {
         const figureWork = document.createElement('figure');
         const imageWork = document.createElement('img');
         imageWork.src = works[i].imageUrl;
@@ -37,41 +38,34 @@ function manageButtonsColor (filter) {
     filter.style.color = 'white';
 }
 
-function emptyGallery () {
-    const galleryWork = document.querySelector('.gallery');
-    galleryWork.innerHTML='';
-}
-
-function filterGallery(filter, filterWork) {
-    manageButtonsColor(filter);
-    emptyGallery();
-    generateWorks(filterWork);
-}
-
 // display all works
 const filterAll = document.querySelector('.filter-all');
 filterAll.addEventListener('click', () => {
     const filterWork = works.filter((work) => work);
-    filterGallery(filterAll, filterWork);
+    manageButtonsColor(filterAll);
+    generateWorks(filterWork);
 });
 
 // display 'objects' works
 const filterObject = document.querySelector('.filter-object');
 filterObject.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 1);
-    filterGallery(filterObject, filterWork);
+    manageButtonsColor(filterObject);
+    generateWorks(filterWork);
 });
 
 // display 'appartment' works
 const filterAppartment = document.querySelector('.filter-appartment');
 filterAppartment.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 2);
-    filterGallery(filterAppartment, filterWork);
+    manageButtonsColor(filterAppartment);
+    generateWorks(filterWork);
 });
 
 // display 'hotel & restaurant' works
 const filterHotel = document.querySelector('.filter-hotel');
 filterHotel.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 3);
-    filterGallery(filterHotel, filterWork);
+    manageButtonsColor(filterHotel);
+    generateWorks(filterWork);
 });
