@@ -1,4 +1,4 @@
-import {generateWorks, manageButtonsColor} from './main.js';
+import {generateWorks, manageFiltersColor} from './main.js';
 
 /*
     fetch works from api and generate them
@@ -17,7 +17,7 @@ generateWorks(works);
 const filterAll = document.querySelector('.filter-all');
 filterAll.addEventListener('click', () => {
     const filterWork = works.filter((work) => work);
-    manageButtonsColor(filterAll);
+    manageFiltersColor(filterAll);
     generateWorks(filterWork);
 });
 
@@ -25,7 +25,7 @@ filterAll.addEventListener('click', () => {
 const filterObject = document.querySelector('.filter-object');
 filterObject.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 1);
-    manageButtonsColor(filterObject);
+    manageFiltersColor(filterObject);
     generateWorks(filterWork);
 });
 
@@ -33,7 +33,7 @@ filterObject.addEventListener('click', () => {
 const filterAppartment = document.querySelector('.filter-appartment');
 filterAppartment.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 2);
-    manageButtonsColor(filterAppartment);
+    manageFiltersColor(filterAppartment);
     generateWorks(filterWork);
 });
 
@@ -41,6 +41,6 @@ filterAppartment.addEventListener('click', () => {
 const filterHotel = document.querySelector('.filter-hotel');
 filterHotel.addEventListener('click', () => {
     const filterWork = works.filter((work) => work.categoryId == 3);
-    manageButtonsColor(filterHotel);
+    manageFiltersColor(filterHotel);
     generateWorks(filterWork);
 });

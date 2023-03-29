@@ -15,7 +15,7 @@ export function generateWorks (works) {
     }
 }
 
-export function manageButtonsColor (filter) { 
+export function manageFiltersColor (filter) { 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
         filter.style.backgroundColor = '#fffef8';
