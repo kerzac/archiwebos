@@ -4,10 +4,10 @@ import {generateWorks, manageFiltersColor} from './main.js';
     fetch works from api and generate them
 */
 
-const works = await fetch('http://localhost:5678/api/works')
+const request = await fetch('http://localhost:5678/api/works')
                         .then((response) => response.json());
 
-generateWorks(works);
+generateWorks(request);
 
 /*
     create funtionnal filtering buttons
@@ -16,7 +16,7 @@ generateWorks(works);
 // display all works
 const filterAll = document.querySelector('.filter-all');
 filterAll.addEventListener('click', () => {
-    const filterWork = works.filter((work) => work);
+    const filterWork = request.filter((work) => work);
     manageFiltersColor(filterAll);
     generateWorks(filterWork);
 });
@@ -24,7 +24,7 @@ filterAll.addEventListener('click', () => {
 // display 'objects' works
 const filterObject = document.querySelector('.filter-object');
 filterObject.addEventListener('click', () => {
-    const filterWork = works.filter((work) => work.categoryId == 1);
+    const filterWork = request.filter((work) => work.categoryId == 1);
     manageFiltersColor(filterObject);
     generateWorks(filterWork);
 });
@@ -32,7 +32,7 @@ filterObject.addEventListener('click', () => {
 // display 'appartment' works
 const filterAppartment = document.querySelector('.filter-appartment');
 filterAppartment.addEventListener('click', () => {
-    const filterWork = works.filter((work) => work.categoryId == 2);
+    const filterWork = request.filter((work) => work.categoryId == 2);
     manageFiltersColor(filterAppartment);
     generateWorks(filterWork);
 });
@@ -40,7 +40,7 @@ filterAppartment.addEventListener('click', () => {
 // display 'hotel & restaurant' works
 const filterHotel = document.querySelector('.filter-hotel');
 filterHotel.addEventListener('click', () => {
-    const filterWork = works.filter((work) => work.categoryId == 3);
+    const filterWork = request.filter((work) => work.categoryId == 3);
     manageFiltersColor(filterHotel);
     generateWorks(filterWork);
 });
