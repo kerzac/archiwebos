@@ -29,7 +29,7 @@ logInput.addEventListener('click', async (e) => {
 
     if (request.ok) {
         window.location.href='index-authorized.html';
-    }else {
+    } else {
         alert('Votre identifiant et/ou votre mot de passe ne sont pas valides');
     }
 });
