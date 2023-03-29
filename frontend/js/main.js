@@ -20,7 +20,7 @@ function generateWorks (works) {
 }
 
 const works = await fetch('http://localhost:5678/api/works')
-                    .then((response) => response.json());
+                        .then((response) => response.json());
 
 generateWorks(works);
 
