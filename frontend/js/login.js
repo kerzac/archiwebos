@@ -25,10 +25,11 @@ logInput.addEventListener('click', async (e) => {
     response.then((data) => {
         window.localStorage.setItem('userId', JSON.stringify(data.userId));
         window.localStorage.setItem('token', JSON.stringify(data.token));
+        window.localStorage.setItem('authentication', true);
     });
 
     if (request.ok) {
-        window.location.href='index-authorized.html';
+        window.location.href='index.html';
     } else {
         alert('Votre identifiant et/ou votre mot de passe ne sont pas valides');
     }
