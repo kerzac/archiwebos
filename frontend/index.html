@@ -10,9 +10,14 @@
 	<meta name="description" content="Portfolio de Sophie Bluel">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/66956b17ac.js" crossorigin="anonymous"></script>
-	<script type='module' src='./js/index.js' defer></script>
+	<script type='module' src='./js/index.js'></script>
 </head>
 <body>
+<div class='hidden edition edition-header'>
+	<i class="fa-solid fa-pen-to-square"></i>
+	<span>Mode édition</span>
+	<button>publier les changements</button>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -26,19 +31,33 @@
 </header>
 
 <main>
-	<section id="introduction">
+	<div id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel">
+			<div class='hidden edition edition-figure'>
+				<i class="fa-solid fa-pen-to-square"></i>
+				<span>modifier</span>
+			</div>
 		</figure>
 		<article>
+			<div class='hidden edition edition-intro'>
+				<i class="fa-solid fa-pen-to-square"></i>
+				<span>modifier</span>
+			</div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
-	</section>
+	</div>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class='gallery-edition'>
+			<h2>Mes Projets</h2>
+			<div class='hidden edition edition-intro'>
+				<i class="fa-solid fa-pen-to-square"></i>
+				<span>modifier</span>
+			</div>
+		</div>
 		<div class='gallery-filter'>
 			<button class='filter filter-all'>Tous</button>
 			<button class='filter filter-object'>Objets</button>

@@ -57,7 +57,7 @@ table {
 /** end reset css **/
 
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
@@ -68,11 +68,11 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0;
+	margin: 50px 150px;
 }
 
 section {
-	margin: 50px 0;
+	margin: 50px 150px;
 }
 
 h1 {
@@ -125,9 +125,12 @@ a {
 #introduction {
 	display: flex;
 	align-items: center;
+	margin: 50px 150px;
 }
 
 #introduction figure {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
 }
 
@@ -258,6 +261,57 @@ footer nav ul {
 	font-size: 0.875em;
 }
 
+/* edition mode */
+
+.edition-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	height: 3rem;
+	column-gap: 0.75rem;
+}
+
+.edition-header i,
+.edition-header span {
+	color: white;
+}
+
+.edition-header button {
+	font-family: 'Syne';
+	font-weight: 700;
+	background-color: white;
+	color: black;
+	padding: 0 1em 0 1em;
+	height: 2.5em;
+	min-width: 6em;
+	text-align: center;
+	border-radius: 60px;
+}
+
+.edition-figure {
+	width: 80%;
+	margin: auto;
+	padding-top: 1rem;
+}
+
+.edition-intro {
+	margin-bottom: 1rem;
+}
+
+.gallery-edition {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	column-gap: 1.25rem;
+}
+
+.hidden {
+	display: none;
+}
+
 /* login */
 
 .nav-login {
@@ -305,5 +359,3 @@ footer nav ul {
 footer {
 	margin-top: 6em;
 }
-
-/* authorized */
