@@ -1,0 +1,4 @@
+/*
+    manage modal view
+*/
+
