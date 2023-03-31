@@ -1,18 +1,18 @@
-function generateModalWorks (works) {
-    const modalWork = document.querySelector('.modal-center');
-    modalWork.innerHTML = '';
-    modalWork.classList.add('modal-gallery')
+function generateModalGallery (works) {
+    const modalGallery = document.querySelector('.modal-center');
+    modalGallery.innerHTML = '';
+    modalGallery.classList.add('modal-gallery')
 
     for (let i = 0; i < works.length; i++) {
-        const figureWork = document.createElement('figure');
-        const imageWork = document.createElement('img');
-        imageWork.src = works[i].imageUrl;
-        const captionWork = document.createElement('figcaption');
-        captionWork.innerText = 'éditer';
+        const figureGallery = document.createElement('figure');
+        const imageGallery = document.createElement('img');
+        imageGallery.src = works[i].imageUrl;
+        const captionGallery = document.createElement('figcaption');
+        captionGallery.innerText = 'éditer';
 
-        modalWork.appendChild(figureWork);
-        figureWork.appendChild(imageWork);
-        figureWork.appendChild(captionWork);
+        modalGallery.appendChild(figureGallery);
+        figureGallery.appendChild(imageGallery);
+        figureGallery.appendChild(captionGallery);
     }
 }
 
@@ -23,22 +23,22 @@ const request = await fetch('http://localhost:5678/api/works')
     manage modal display
 */
 
-const galleryModal = document.querySelector('.modal-link');
-const modalSection = document.querySelector('.modal');
+const modalLink = document.querySelector('.modal-link');
 const modalClose = document.querySelector('.modal-close');
+const modalSection = document.querySelector('.modal');
 
 // open modal
-galleryModal.addEventListener('click', () => {
-    const target = galleryModal.getAttribute('href');
+modalLink.addEventListener('click', () => {
+    const target = modalLink.getAttribute('href');
     const modal = document.querySelector(target);
     modal.classList.remove('hidden');
 
-    generateModalWorks(request);
+    generateModalGallery(request);
 });
 
 // close modal
 modalClose.addEventListener('click', () => {
-    const target = galleryModal.getAttribute('href');
+    const target = modalLink.getAttribute('href');
     const modal = document.querySelector(target);
     modal.classList.add('hidden');
 });
