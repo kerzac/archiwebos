@@ -56,6 +56,23 @@ table {
 
 /** end reset css **/
 
+input[type='submit'], button {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1d6154;
+	margin : 2rem auto;
+	width: 12rem;
+	text-align: center;
+	border: 1px solid #1d6154;
+	border-radius: 4rem;
+}
+
+input[type='submit']:hover, button:hover {
+	cursor: pointer;
+	box-shadow: 0.05rem 0.05rem 0.05rem #1d6154;
+}
+
 body {
 	max-width: 1440px;
 	margin: auto;
@@ -173,22 +190,10 @@ a {
 }
 
 .gallery-filter button {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: #1d6154;
 	background-color: #fffef8;
-	margin : 2rem 0 3rem 0;
-	padding: 0 1rem 0 1rem;
-	height: 2.5rem;
-	min-width: 8rem;
-	text-align: center;
-	border: 0.1rem solid #1d6154;
-	border-radius: 4rem;
-}
-
-.gallery-filter button:hover {
-	cursor: pointer;
-	box-shadow: 0.05rem 0.05rem 0.05rem #1d6154;
+	color: #1d6154;
+	margin: 2rem 0.75rem;
+	height: 2rem;
 }
 
 .gallery img {
@@ -231,21 +236,6 @@ a {
 	box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.09);
 }
 
-input[type='submit'] {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1d6154;
-	margin : 2rem auto;
-	width: 12rem;
-	text-align: center;
-	border-radius: 4rem;
-}
-
-input[type='submit']:hover{
-	cursor: pointer;
-}
-
 footer {
 	background-color: white;
 }
@@ -279,15 +269,11 @@ footer nav ul {
 }
 
 .edition-header button {
-	font-family: 'Syne';
-	font-weight: 700;
+	margin: 0;
+	width: 16rem;
+	height: 2rem;
 	background-color: white;
 	color: black;
-	padding: 0 1rem 0 1rem;
-	height: 2.5rem;
-	min-width: 6rem;
-	text-align: center;
-	border-radius: 4rem;
 }
 
 .edition-figure {
@@ -325,30 +311,74 @@ footer nav ul {
 .modal-container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	width: 36rem;
 	padding: 1rem;
 	background-color: white;
 	border-radius: 0.75rem;
 }
 
-.modal-header {
-	font-family: 'Work sans';
-	font-weight: 400;
-	font-size: 1.5rem;
-	margin: 1rem;
-	color: #1d6154;
+.modal-top {
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	margin-bottom: 2rem;
 }
 
-.modal-close {
-	align-self: flex-end;
+.modal-back, .modal-close {
+	margin: 0;
+	width: auto;
+	height: auto;
 	border: none;
 	color: #3d3d3d;
 	background-color: white;
 }
 
-.modal-close:hover {
+.modal-back {
+	align-items: flex-start;
+}
+
+.modal-close {
+	align-items: flex-end;
+}
+
+.modal-close:hover, .modal-back:hover {
 	cursor: pointer;
 	color: #b1663c;
+	box-shadow: none;
+}
+
+.modal-header {
+	font-family: 'Work sans';
+	font-weight: 400;
+	font-size: 1.5rem;
+	margin: 2rem;
+	color: #3d3d3d;
+}
+
+.modal-gallery {
+	max-width: 24rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 1.25rem;
+	grid-row-gap: 1.25rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #3d3d3d;
+}
+
+.modal-gallery img {
+	width: 100%;
+}
+
+.modal-bottom {
+	display:flex ;
+	flex-direction: column;
+}
+
+.addWorkButton {
+	height: 2rem;
+	margin: 1.5rem;
 }
 
 /* login */
@@ -383,7 +413,7 @@ footer nav ul {
 	height: 3rem;
 	font-size: 1.2rem;
 	border: none;
-	box-shadow: 0px 0.25rem 0.875rem rgba(0, 0, 0, 0.09);
+	box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.09);
 }
 
 #login label {

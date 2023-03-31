@@ -1,6 +1,6 @@
 function generateWorks (works) {
     const galleryWork = document.querySelector('.gallery');
-    galleryWork.innerHTML='';
+    galleryWork.innerHTML = '';
 
     for (let i = 0; i < works.length; i++) {
         const figureWork = document.createElement('figure');

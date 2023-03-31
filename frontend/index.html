@@ -18,7 +18,7 @@
 <div class='hidden edition edition-header'>
 	<i class='fa-solid fa-pen-to-square'></i>
 	<span>Mode édition</span>
-	<button>publier les changements</button>
+	<button type='button'>publier les changements</button>
 </div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -56,24 +56,39 @@
 		<div class='gallery-edition'>
 			<h2>Mes Projets</h2>
 			<div class='hidden edition edition-intro'>
-				<a href='#gallery-modal' class='modal-gallery'>
+				<a href='#gallery-modal' class='modal-link'>
 					<i class='fa-solid fa-pen-to-square'></i>
 					<span>modifier</span>
 				</a>
 			</div>
 		</div>
 		<div class='gallery-filter'>
-			<button class='filter filter-all'>Tous</button>
-			<button class='filter filter-object'>Objets</button>
-			<button class='filter filter-appartment'>Appartements</button>
-			<button class='filter filter-hotel'>Hôtels & restaurants</button>
+			<button type='button' class='filter filter-all'>Tous</button>
+			<button type='button' class='filter filter-object'>Objets</button>
+			<button type='button' class='filter filter-appartment'>Appartements</button>
+			<button type='button' class='filter filter-hotel'>Hôtels & restaurants</button>
 		</div>
 		<div class='gallery'>
+			<!-- dynamically generated (js) -->
 		</div>
 	</section>
 	<aside id='gallery-modal' class='modal hidden'>
 			<div class='modal-container'>
-				<button class='modal-close'>fermer</button>
+				<div class='modal-top'>
+					<button type='button' class='modal-close'>
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+					<button type='button' class='modal-back'>
+						<i class="fa-solid fa-arrow-left"></i>
+					</button>
+					
+				</div>
+				<div class='modal-center'>
+					<!-- dynamically generated (js) -->
+				</div>
+				<div class='modal-bottom'>
+					<button type='button' class='addWorkButton'>Ajouter une photo</button>
+				</div>
 			</div>
 	</aside>
 	<section id='contact'>
