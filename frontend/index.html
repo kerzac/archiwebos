@@ -12,6 +12,7 @@
 	<script src='https://kit.fontawesome.com/66956b17ac.js' crossorigin='anonymous'></script>
 	<script type='module' src='./js/index-works.js'></script>
 	<script type='module' src='./js/index-authorized.js'></script>
+	<script type='module' src='./js/index-modal.js'></script>
 </head>
 <body>
 <div class='hidden edition edition-header'>
@@ -55,7 +56,7 @@
 		<div class='gallery-edition'>
 			<h2>Mes Projets</h2>
 			<div class='hidden edition edition-intro'>
-				<a href='#modal-edition'>
+				<a href='#gallery-modal' class='modal-gallery'>
 					<i class='fa-solid fa-pen-to-square'></i>
 					<span>modifier</span>
 				</a>
@@ -70,8 +71,10 @@
 		<div class='gallery'>
 		</div>
 	</section>
-	<aside id='modal-edition'>
-			
+	<aside id='gallery-modal' class='modal hidden'>
+			<div class='modal-container'>
+				<button class='modal-close'>fermer</button>
+			</div>
 	</aside>
 	<section id='contact'>
 		<h2>Contact</h2>

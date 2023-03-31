@@ -19,7 +19,7 @@ logInput.addEventListener('click', async (e) => {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(user)
-    })
+    });
     
     const response = request.json()
     response.then((data) => {
