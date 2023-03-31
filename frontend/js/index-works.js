@@ -4,8 +4,10 @@ function generateWorks (works) {
 
     for (let i = 0; i < works.length; i++) {
         const figureWork = document.createElement('figure');
+        
         const imageWork = document.createElement('img');
         imageWork.src = works[i].imageUrl;
+
         const captionWork = document.createElement('figcaption');
         captionWork.innerText = works[i].title;
 
