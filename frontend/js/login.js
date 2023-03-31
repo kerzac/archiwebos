@@ -31,6 +31,6 @@ logInput.addEventListener('click', async (e) => {
         window.location.href='index.html';
         window.localStorage.setItem('authentication', true);
     } else {
-        alert('Votre identifiant et/ou votre mot de passe ne sont pas valides');
+        alert("Erreur dans l'identifiant ou le mot de passe");
     }
 });
