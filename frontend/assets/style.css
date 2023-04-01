@@ -398,6 +398,10 @@ footer nav ul {
 	line-height: 1rem;
 }
 
+.modal-gallery .fa-trash:hover {
+	cursor: pointer;
+}
+
 #modal-form {
 	display: flex;
 	flex-direction: column;
