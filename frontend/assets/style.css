@@ -467,7 +467,6 @@ footer nav ul {
 
 .send-one-button {
 	height: 2rem;
-	background-color: #a8a8a8;
 	border: none;
 }
 
@@ -480,7 +479,7 @@ footer nav ul {
 	font-weight: 400;
 }
 
-.delete-all-button:hover, .send-one-button:hover {
+.delete-all-button:hover {
 	box-shadow: none;
 }
 
