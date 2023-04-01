@@ -30,6 +30,7 @@ if (window.localStorage.getItem('authentication')) {
     modal
     -----
 */
+
 const modal = document.querySelector('.modal');
 const modalOpen = document.querySelector('.modal-open');
 const modalClose = document.querySelectorAll('.modal-close');
@@ -85,17 +86,21 @@ modalBack.addEventListener('click', () => {
 const deleteOne = document.querySelectorAll('.fa-trash');
 
 deleteOne.forEach((button) => {
-    
     button.addEventListener('click', async (e) => {
-        const figure = e.currentTarget.parentElement;
-        const figureId = figure.id.split('-')[1]
+        const modalFigure = e.currentTarget.parentElement;
+        const figureId = modalFigure.id.split('-')[1]
+        const indexFigure = document.getElementById(`indexFigure-${figureId}`)
         
-        const request = await fetch(`http://localhost:5678/api/works/${figureId}`, {
+        const deleteWork = await fetch(`http://localhost:5678/api/works/${figureId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.token}`
             }
         });
+        if (deleteWork.ok) {
+            modalFigure.remove();
+            indexFigure.remove();
+        }
     });
 });
         

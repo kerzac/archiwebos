@@ -15,7 +15,7 @@ logInput.addEventListener('click', async (e) => {
         password: password
     };
     
-    const request = await fetch('http://localhost:5678/api/users/login', {
+    const postLogin = await fetch('http://localhost:5678/api/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -23,13 +23,13 @@ logInput.addEventListener('click', async (e) => {
         body: JSON.stringify(user)
     });
     
-    const response = request.json()
+    const response = postLogin.json()
     response.then((data) => {
         window.localStorage.setItem('userId', data.userId);
         window.localStorage.setItem('token', data.token);
     });
 
-    if (request.ok) {
+    if (postLogin.ok) {
         window.location.href='index.html';
         window.localStorage.setItem('authentication', true);
     } else {
