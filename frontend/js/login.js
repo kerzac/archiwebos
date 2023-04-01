@@ -1,7 +1,9 @@
 /*
-    manage login
+    main
+    -----
 */
 
+// manage login
 const logInput = document.getElementById('log-input');
 
 logInput.addEventListener('click', async (e) => {
@@ -23,8 +25,8 @@ logInput.addEventListener('click', async (e) => {
     
     const response = request.json()
     response.then((data) => {
-        window.localStorage.setItem('userId', JSON.stringify(data.userId));
-        window.localStorage.setItem('token', JSON.stringify(data.token));
+        window.localStorage.setItem('userId', data.userId);
+        window.localStorage.setItem('token', data.token);
     });
 
     if (request.ok) {

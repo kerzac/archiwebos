@@ -10,10 +10,9 @@
 	<meta name='description' content='Portfolio de Sophie Bluel'>
 	<link rel='stylesheet' href='./assets/style.css'>
 	<script src='https://kit.fontawesome.com/66956b17ac.js' crossorigin='anonymous'></script>
-	<script type='module' src='./js/index-works.js'></script>
-	<script type='module' src='./js/index-authorized.js'></script>
-	<script type='module' src='./js/index-modal.js'></script>
+	<script type='module' src='./js/index.js'></script>
 </head>
+
 <body>
 <div class='hidden edition edition-header'>
 	<i class='fa-solid fa-pen-to-square'></i>
@@ -26,7 +25,7 @@
 		<ul>
 			<li><a href='#portfolio'>projets</a></li>
 			<li><a href='#contact'>contact</a></li>
-			<li><a id='logIn' href='./login.html'>login</a></li>
+			<li><a id='log-in' href='./login.html'>login</a></li>
 			<li><a href='#'><img src='./assets/icons/instagram.png' alt='Instagram'></a></li>
 		</ul>
 	</nav>
@@ -36,13 +35,13 @@
 	<div id='introduction'>
 		<figure>
 			<img src='./assets/images/sophie-bluel.png' alt='Sophie Bluel'>
-			<div class='hidden edition edition-figure'>
+			<div class='edition edition-figure hidden '>
 				<i class='fa-solid fa-pen-to-square'></i>
 				<span>modifier</span>
 			</div>
 		</figure>
 		<article>
-			<div class='hidden edition edition-intro'>
+			<div class='edition edition-intro hidden'>
 				<i class='fa-solid fa-pen-to-square'></i>
 				<span>modifier</span>
 			</div>
@@ -53,10 +52,10 @@
 		</article>
 	</div>
 	<section id='portfolio'>
-		<div class='gallery-edition'>
+		<div class='edition-portfolio'>
 			<h2>Mes Projets</h2>
-			<div class='hidden edition edition-intro'>
-				<a href='#portfolio-modal' class='modal-link'>
+			<div class='edition edition-intro hidden'>
+				<a href='#portfolio-modal' class='modal-open'>
 					<i class='fa-solid fa-pen-to-square'></i>
 					<span>modifier</span>
 				</a>
@@ -84,11 +83,11 @@
 					<!-- dynamically generated (js) -->
 				</div>
 				<div class='modal-bottom'>
-					<button type='button' class='add-work-button'>Ajouter une photo</button>
-					<button class='delete-gallery-button'>Supprimer la galerie</button>
+					<button type='button' class='add-one-button'>Ajouter une photo</button>
+					<button class='delete-all-button'>Supprimer la galerie</button>
 				</div>
 			</div>
-			<div class='modal-container-form hidden'>
+			<div class='modal-container-form'>
 				<div class='modal-top'>
 					<button type='button' class='modal-close'>
 						<i class="fa-solid fa-xmark"></i>
@@ -117,7 +116,7 @@
 					</form>
 				</div>
 				<div class='modal-bottom'>
-					<button form='modal-form' class='send-work-button' disabled>Valider</button>
+					<button form='modal-form' class='send-one-button' disabled>Valider</button>
 				</div>
 			</div>
 	</aside>
