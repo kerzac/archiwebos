@@ -3,20 +3,17 @@
     ----
 */
 
-//fetch works from api and generate galleries
-const getWorks = await fetch('http://localhost:5678/api/works')
+// fetch works from api and generate galleries
+let getWorks = await fetch('http://localhost:5678/api/works')
                         .then((response) => response.json());
 
-generateGalleries(getWorks);
+generateIndexGallery(getWorks);
+generateModalGallery(getWorks);
 
-//call filters functions
-allFilter(getWorks);
-objectFilter(getWorks);
-appartmentFilter(getWorks);
-hotelFilter(getWorks);
+//manage index filters
+indexFilters();
 
-
-//toggle admin acces
+// toggle admin acces
 const logIn = document.getElementById('log-in');
 logIn.addEventListener('click', () => localStorage.clear());
 const editions = document.querySelectorAll('.edition');
@@ -97,9 +94,13 @@ deleteOne.forEach((button) => {
                 'Authorization': `Bearer ${localStorage.token}`
             }
         });
+
         if (deleteWork.ok) {
             modalFigure.remove();
             indexFigure.remove();
+
+            getWorks = await fetch('http://localhost:5678/api/works')
+                                .then((response) => response.json());
         }
     });
 });
@@ -110,19 +111,13 @@ deleteOne.forEach((button) => {
     ---------
 */
 
-//generate galleries
-function generateGalleries (gallery) {
-    //index gallery
+// generate index gallery
+function generateIndexGallery (gallery) {
+    // index gallery
     const indexGallery = document.querySelector('.gallery');
     indexGallery.innerHTML = '';
-
-    //modal gallery
-    const modalGallery = document.querySelector('.modal-gallery');
-    modalGallery.innerHTML = '';
-
-    //iterate gallery
+    // iterate index gallery
     for (let i = 0; i < gallery.length; i++) {
-        //index
         const indexFigure = document.createElement('figure');
         indexFigure.id = `indexFigure-${gallery[i].id}`;
         
@@ -136,7 +131,16 @@ function generateGalleries (gallery) {
         indexFigure.appendChild(indexImage);
         indexFigure.appendChild(indexCaption);
 
-        //modal
+    }
+}
+
+// generate modal gallery
+    function generateModalGallery (gallery) {
+     // modal gallery
+    const modalGallery = document.querySelector('.modal-gallery');
+    modalGallery.innerHTML = '';
+    // iterate modal gallery
+    for (let i = 0; i < gallery.length; i++) {
         const modalFigure = document.createElement('figure');
         modalFigure.id = `modalFigure-${gallery[i].id}`;
 
@@ -157,45 +161,38 @@ function generateGalleries (gallery) {
     }
 }
 
-//filters action and style
-
-//display all
-function allFilter (request) {
+//index filters
+function indexFilters () {
+    // 'display all' filter
     const allFilter = document.querySelector('.filter-all');
     allFilter.addEventListener('click', () => {
-    const filteredGallery = request.filter((gallery) => gallery);
-    filtersColor(allFilter);
-    generateGalleries(filteredGallery);
+        const filteredGallery = getWorks.filter((gallery) => gallery);
+        filtersColor(allFilter);
+        generateIndexGallery(filteredGallery);
     });
-}
 
-// display 'objects'
-function objectFilter (request) {
+    // 'display objects' filter
     const objectFilter = document.querySelector('.filter-object');
     objectFilter.addEventListener('click', () => {
-    const filteredGallery = request.filter((gallery) => gallery.categoryId == 1);
-    filtersColor(objectFilter);
-    generateGalleries(filteredGallery);
+        const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 1);
+        filtersColor(objectFilter);
+        generateIndexGallery(filteredGallery);
     });
-}
 
-// display 'appartment'
-function appartmentFilter (request) {
+    // 'display appartment' filter
     const appartmentFilter = document.querySelector('.filter-appartment');
     appartmentFilter.addEventListener('click', () => {
-    const filteredGallery = request.filter((gallery) => gallery.categoryId == 2);
+    const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 2);
     filtersColor(appartmentFilter);
-    generateGalleries(filteredGallery);
+    generateIndexGallery(filteredGallery);
     });
-}
 
-// display 'hotel & restaurant'
-function hotelFilter (request) {
+    // 'display hotel & restaurant' filter
     const hotelFilter = document.querySelector('.filter-hotel');
     hotelFilter.addEventListener('click', () => {
-    const filteredGallery = request.filter((gallery) => gallery.categoryId == 3);
+    const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 3);
     filtersColor(hotelFilter);
-    generateGalleries(filteredGallery);
+    generateIndexGallery(filteredGallery);
     });
 }
 
