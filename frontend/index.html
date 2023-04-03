@@ -83,7 +83,7 @@
 							<!-- dynamically generated (js) -->
 						</div>
 						<div class='modal-bottom'>
-							<button type='button' class='add-one-button'>Ajouter une photo</button>
+							<button type='button' class='send-one-button'>Ajouter une photo</button>
 							<button class='delete-all-button'>Supprimer la galerie</button>
 						</div>
 					</div>
@@ -101,8 +101,9 @@
 							<form action='#' method='post' id='modal-form'>
 								<div class='modal-file-container'>
 									<i class="fa-regular fa-image"></i>
-									<label class='file-button'for='modal-form-image'>+ Ajouter photo</label>
-									<input class='hidden' name='image' id='modal-form-image' type='file' required>
+									<img class='hidden' id='file-container' src='#' alt='image'>
+									<label class='file-button'for='modal-form-file'>+ Ajouter photo</label>
+									<input class='hidden' name='image' id='modal-form-file' type='file' required>
 									<p>jpg, png: 4mo max.</p>
 								</div>
 								<label for='modal-form-title'>Titre</label>
@@ -116,7 +117,7 @@
 							</form>
 						</div>
 						<div class='modal-bottom'>
-							<button form='modal-form' class='send-one-button' disabled>Valider</button>
+							<button form='modal-form' class='add-one-button' disabled>Valider</button>
 						</div>
 					</div>
 			</aside>

@@ -94,9 +94,9 @@ modal.addEventListener('click', (e) => {
 });
 
 // display modal form
-const addOne = document.querySelector('.add-one-button');
+const sendOne = document.querySelector('.send-one-button');
 
-addOne.addEventListener('click', () => {
+sendOne.addEventListener('click', () => {
     const modalContainerGallery = document.querySelector('.modal-container-gallery');
     modalContainerGallery.classList.add('hidden');
     const modalContainerForm = document.querySelector('.modal-container-form');
@@ -138,7 +138,19 @@ deleteOne.forEach((button) => {
         }
     });
 });
-        
+
+// add from modal
+const modalFileContainer = document.querySelector('.modal-file-container');
+const modalFormFile = document.querySelector('#modal-form-file');
+const fileContainer = document.querySelector('#file-container');
+
+modalFormFile.addEventListener('change', () => {
+    const file = modalFormFile.files[0];
+    if (file) {
+        fileContainer.classList.remove('hidden');
+        fileContainer.src = URL.createObjectURL(file);
+    }
+})
 
 /*
     functions

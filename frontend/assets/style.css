@@ -417,12 +417,13 @@ footer nav ul {
 }
 
 .modal-file-container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	row-gap: 0.75rem;
 	justify-content: center;
 	align-items: center;
-	height: 14rem;
+	height: 12rem;
 	background-color: #e8f1f6;
 }
 
@@ -460,12 +461,12 @@ footer nav ul {
 	flex-direction: column;
 }
 
-.add-one-button {
+.send-one-button {
 	height: 2rem;
 	margin: 2rem 0 0.5rem 0;
 }
 
-.send-one-button {
+.add-one-button {
 	height: 2rem;
 	border: none;
 }
@@ -481,6 +482,15 @@ footer nav ul {
 
 .delete-all-button:hover {
 	box-shadow: none;
+}
+
+#file-container {
+	position: absolute;
+	top: 0.5rem;
+	z-index: 1;
+	object-fit: contain;
+	width: 100%;
+	height: 50%;
 }
 
 /* login */
