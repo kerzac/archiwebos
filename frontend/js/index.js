@@ -10,18 +10,52 @@ let getWorks = await fetch('http://localhost:5678/api/works')
 generateIndexGallery(getWorks);
 generateModalGallery(getWorks);
 
-//manage index filters
-indexFilters();
+ // 'display all' filter
+const displayAll = document.querySelector('.filter-all');
+
+displayAll.addEventListener('click', () => {
+    const allFilter = getWorks.filter((works) => works.categoryId);
+    generateIndexGallery(allFilter);
+    switchFilterStyle(displayAll)
+ })
+
+// 'display object' filter
+const displayObject = document.querySelector('.filter-object');
+
+displayObject.addEventListener('click', () => {
+    const objectFilter = getWorks.filter((works) => works.categoryId == 1);
+    generateIndexGallery(objectFilter);
+    switchFilterStyle(displayObject);
+ })
+
+// 'display appartment' filter
+const displayAppartment = document.querySelector('.filter-appartment');
+
+displayAppartment.addEventListener('click', () => {
+    const appartmentFilter = getWorks.filter((works) => works.categoryId == 2);
+    generateIndexGallery(appartmentFilter);
+    switchFilterStyle(displayAppartment);
+ })
+
+// 'display hotel' filter
+const displayHotel = document.querySelector('.filter-hotel');
+
+displayHotel.addEventListener('click', () => {
+    const hotelFilter = getWorks.filter((works) => works.categoryId == 3);
+    generateIndexGallery(hotelFilter);
+    switchFilterStyle(displayHotel);
+ })
+
 
 // toggle admin acces
 const logIn = document.getElementById('log-in');
 logIn.addEventListener('click', () => localStorage.clear());
-const editions = document.querySelectorAll('.edition');
 
+const editions = document.querySelectorAll('.edition');
 if (window.localStorage.getItem('authentication')) {
     logIn.innerText = 'logout';
     editions.forEach((edition) => edition.classList.remove('hidden'));
-    }
+}
 
 /*
     modal
@@ -161,43 +195,8 @@ function generateIndexGallery (gallery) {
     }
 }
 
-//index filters
-function indexFilters () {
-    // 'display all' filter
-    const allFilter = document.querySelector('.filter-all');
-    allFilter.addEventListener('click', () => {
-        const filteredGallery = getWorks.filter((gallery) => gallery);
-        filtersColor(allFilter);
-        generateIndexGallery(filteredGallery);
-    });
-
-    // 'display objects' filter
-    const objectFilter = document.querySelector('.filter-object');
-    objectFilter.addEventListener('click', () => {
-        const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 1);
-        filtersColor(objectFilter);
-        generateIndexGallery(filteredGallery);
-    });
-
-    // 'display appartment' filter
-    const appartmentFilter = document.querySelector('.filter-appartment');
-    appartmentFilter.addEventListener('click', () => {
-    const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 2);
-    filtersColor(appartmentFilter);
-    generateIndexGallery(filteredGallery);
-    });
-
-    // 'display hotel & restaurant' filter
-    const hotelFilter = document.querySelector('.filter-hotel');
-    hotelFilter.addEventListener('click', () => {
-    const filteredGallery = getWorks.filter((gallery) => gallery.categoryId == 3);
-    filtersColor(hotelFilter);
-    generateIndexGallery(filteredGallery);
-    });
-}
-
-// filters style
-function filtersColor (filter) { 
+// switch filter style
+function switchFilterStyle (filter) { 
     const filters = document.querySelectorAll('.filter');
     filters.forEach((filter) => {
         filter.style.backgroundColor = '#fffef8';
