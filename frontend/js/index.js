@@ -152,6 +152,38 @@ modalFormFile.addEventListener('change', () => {
     }
 })
 
+const addOne = document.querySelector('.add-one-button');
+
+    addOne.addEventListener('click', async () => {
+        const image = document.getElementById('modal-form-file').value
+        const title = document.getElementById('modal-form-title').value;
+        const category = document.getElementById('modal-form-category').value
+
+        const work = new FormData();
+        work.append('image', image),
+        work.append('title', title),
+        work.append('category', parseInt(category))
+
+        const postWorks = await fetch('http://localhost:5678/api/works', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: work
+        });
+
+        if (postWorks.ok) {
+            getWorks = await fetch('http://localhost:5678/api/works')
+                                .then((response) => response.json());
+            
+            generateIndexGallery(getWorks);
+            generateModalGallery(getWorks);
+        } else {
+            alert('erreur');
+        }
+    });
+
 /*
     functions
     ---------
