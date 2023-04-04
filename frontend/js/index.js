@@ -4,7 +4,7 @@
 */
 
 // fetch works from api and generate galleries
-let getWorks = await fetch('http://localhost:5678/api/works')
+const getWorks = await fetch('http://localhost:5678/api/works')
                         .then((response) => response.json());
 
 generateIndexGallery(getWorks);
@@ -55,6 +55,7 @@ const editions = document.querySelectorAll('.edition');
 if (localStorage.getItem('authentication')) {
     logIn.innerText = 'logout';
     editions.forEach((edition) => edition.classList.remove('hidden'));
+    document.querySelector('.gallery-filter').classList.add('hidden');
 }
 
 /*
@@ -62,13 +63,8 @@ if (localStorage.getItem('authentication')) {
     -----
 */
 
-const modal = document.querySelector('.modal');
-const modalOpen = document.querySelector('.modal-open');
-const modalClose = document.querySelectorAll('.modal-close');
-
-const modalGallery = document.querySelector('.modalGallery');
-
 // open modal
+const modalOpen = document.querySelector('.modal-open');
 modalOpen.addEventListener('click', () => {
     const target = modalOpen.getAttribute('href');
     const modalTarget = document.querySelector(target);
@@ -81,12 +77,14 @@ modalOpen.addEventListener('click', () => {
 });
 
 // close modal
+const modalClose = document.querySelectorAll('.modal-close');
 modalClose.forEach((close) => close.addEventListener('click', () => {
     const target = modalOpen.getAttribute('href');
     const modalTarget = document.querySelector(target);
     modalTarget.classList.add('hidden');
 }));
 
+const modal = document.querySelector('.modal');
 modal.addEventListener('click', (e) => {
     if(e.target == modal) {
         modal.classList.add('hidden');
@@ -94,16 +92,16 @@ modal.addEventListener('click', (e) => {
 });
 
 // display modal form
-const sendOne = document.querySelector('.send-one-button');
+const addPhotoButton = document.querySelector('.add-photo-button');
 
-sendOne.addEventListener('click', () => {
+addPhotoButton.addEventListener('click', () => {
     const modalContainerGallery = document.querySelector('.modal-container-gallery');
     modalContainerGallery.classList.add('hidden');
     const modalContainerForm = document.querySelector('.modal-container-form');
     modalContainerForm.classList.remove('hidden');
 });
 
-// back to modal gallery
+// return back from modal form
 const modalBack = document.querySelector('.modal-back');
 
 modalBack.addEventListener('click', () => {
@@ -113,36 +111,10 @@ modalBack.addEventListener('click', () => {
     modalContainerForm.classList.add('hidden');
 });
 
-// delete from modal
-const deleteOne = document.querySelectorAll('.fa-trash');
 
-deleteOne.forEach((button) => {
-    button.addEventListener('click', async (e) => {
-        const modalFigure = e.currentTarget.parentElement;
-        const figureId = modalFigure.id.split('-')[1]
-        const indexFigure = document.getElementById(`indexFigure-${figureId}`)
-        
-        const deleteWork = await fetch(`http://localhost:5678/api/works/${figureId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.token}`
-            }
-        });
-
-        if (deleteWork.ok) {
-            modalFigure.remove();
-            indexFigure.remove();
-
-            getWorks = await fetch('http://localhost:5678/api/works')
-                                .then((response) => response.json());
-        }
-    });
-});
-
-// add from modal
-const modalFileContainer = document.querySelector('.modal-file-container');
-const modalFormFile = document.querySelector('#modal-form-file');
+// submit a photo and add it to galleries
 const fileContainer = document.querySelector('#file-container');
+const modalFormFile = document.querySelector('#modal-form-file');
 
 modalFormFile.addEventListener('change', () => {
     const file = modalFormFile.files[0];
@@ -152,9 +124,9 @@ modalFormFile.addEventListener('change', () => {
     }
 })
 
-const addOne = document.querySelector('.add-one-button');
+const submitPhotoButton = document.querySelector('.submit-photo-button');
 
-addOne.addEventListener('click', async (e) => {
+submitPhotoButton.addEventListener('click', async (e) => {
     e.preventDefault();
     const image = document.getElementById('modal-form-file').files[0];
     const title = document.getElementById('modal-form-title').value;
@@ -173,9 +145,11 @@ addOne.addEventListener('click', async (e) => {
         body: work
     });
 
+    const postWorksResponse = await postWorks.json()
+    
     if (postWorks.ok) {
-        getWorks = await fetch('http://localhost:5678/api/works')
-                            .then((response) => response.json());
+        generateIndexWork(postWorksResponse);
+        generateModalWork(postWorksResponse);
     } else {
         alert('Vous devez renseigner tous les champs');
     }
@@ -185,6 +159,17 @@ addOne.addEventListener('click', async (e) => {
     functions
     ---------
 */
+
+// switch filter style
+function switchFilterStyle (filter) { 
+    const filters = document.querySelectorAll('.filter');
+    filters.forEach((filter) => {
+        filter.style.backgroundColor = '#fffef8';
+        filter.style.color = '#1d6154';
+    });
+    filter.style.backgroundColor = '#1d6154';
+    filter.style.color = 'white';
+}
 
 // generate index gallery
 function generateIndexGallery (gallery) {
@@ -209,8 +194,26 @@ function generateIndexGallery (gallery) {
     }
 }
 
+// generate one index work
+function generateIndexWork (work) {
+    const indexGallery = document.querySelector('.gallery');
+   
+    const indexFigure = document.createElement('figure');
+    indexFigure.id = `indexFigure-${work.id}`;
+    
+    const indexImage = document.createElement('img');
+    indexImage.src = work.imageUrl;
+
+    const indexCaption = document.createElement('figcaption');
+    indexCaption.innerText = work.title;
+
+    indexGallery.appendChild(indexFigure);
+    indexFigure.appendChild(indexImage);
+    indexFigure.appendChild(indexCaption);
+}
+
 // generate modal gallery
-    function generateModalGallery (gallery) {
+function generateModalGallery (gallery) {
      // modal gallery
     const modalGallery = document.querySelector('.modal-gallery');
     modalGallery.innerHTML = '';
@@ -234,15 +237,55 @@ function generateIndexGallery (gallery) {
         modalFigure.appendChild(modalTrashIcon);
         modalFigure.appendChild(modalCaption);
     }
+    modalDeleteWork();
 }
 
-// switch filter style
-function switchFilterStyle (filter) { 
-    const filters = document.querySelectorAll('.filter');
-    filters.forEach((filter) => {
-        filter.style.backgroundColor = '#fffef8';
-        filter.style.color = '#1d6154';
+//generate one modal work
+function generateModalWork (work) {
+    const modalGallery = document.querySelector('.modal-gallery');
+
+    const modalFigure = document.createElement('figure');
+    modalFigure.id = `modalFigure-${work.id}`;
+
+    const modalImage = document.createElement('img');
+    modalImage.src = work.imageUrl;
+
+    const modalTrashIcon = document.createElement('i');
+    modalTrashIcon.classList.add('fa-solid');
+    modalTrashIcon.classList.add('fa-trash');
+
+    const modalCaption = document.createElement('figcaption');
+    modalCaption.innerText = 'éditer';
+
+    modalGallery.appendChild(modalFigure);
+    modalFigure.appendChild(modalImage);
+    modalFigure.appendChild(modalTrashIcon);
+    modalFigure.appendChild(modalCaption);
+
+    modalDeleteWork();
+}
+
+// delete work from modal
+function modalDeleteWork () {
+    const deleteOne = document.querySelectorAll('.fa-trash');
+
+    deleteOne.forEach((button) => {
+        button.addEventListener('click', async (e) => {
+            const modalFigure = e.currentTarget.parentElement;
+            const figureId = modalFigure.id.split('-')[1]
+            const indexFigure = document.getElementById(`indexFigure-${figureId}`)
+            
+            const deleteWork = await fetch(`http://localhost:5678/api/works/${figureId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.token}`
+                }
+            });
+
+            if (deleteWork.ok) {
+                modalFigure.remove();
+                indexFigure.remove();
+            }
+        });
     });
-    filter.style.backgroundColor = '#1d6154';
-    filter.style.color = 'white';
 }

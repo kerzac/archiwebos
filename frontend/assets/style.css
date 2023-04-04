@@ -461,12 +461,12 @@ footer nav ul {
 	flex-direction: column;
 }
 
-.send-one-button {
+.add-photo-button {
 	height: 2rem;
 	margin: 2rem 0 0.5rem 0;
 }
 
-.add-one-button {
+.submit-photo-button {
 	height: 2rem;
 	border: none;
 }

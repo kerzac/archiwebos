@@ -23,15 +23,13 @@ logInput.addEventListener('click', async (e) => {
         body: JSON.stringify(user)
     });
 
-    const response = postLogin.json()
+    const PostLoginResponse = await postLogin.json();
 
     if (postLogin.ok) {
-        response.then((data) => {
         window.location.href='index.html';
         localStorage.setItem('authentication', true);
-        localStorage.setItem('userId', data.userId);
-        localStorage.setItem('token', data.token);
-        })
+        localStorage.setItem('userId', PostLoginResponse.userId);
+        localStorage.setItem('token', PostLoginResponse.token);
     } else {
         alert("Erreur dans l'identifiant ou le mot de passe");
     }
