@@ -154,7 +154,8 @@ modalFormFile.addEventListener('change', () => {
 
 const addOne = document.querySelector('.add-one-button');
 
-    addOne.addEventListener('click', async () => {
+    addOne.addEventListener('click', async (e) => {
+        e.preventDefault();
         const image = document.getElementById('modal-form-file').value
         const title = document.getElementById('modal-form-title').value;
         const category = document.getElementById('modal-form-category').value
