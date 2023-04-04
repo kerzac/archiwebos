@@ -416,7 +416,7 @@ footer nav ul {
 	display: inline-block;
 }
 
-.modal-gallery .fa-trash:hover {
+.fa-trash:hover,  .fa-arrows-up-down-left-right:hover {
 	cursor: pointer;
 }
 

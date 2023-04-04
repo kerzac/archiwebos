@@ -236,8 +236,9 @@ function generateModalGallery (gallery) {
         modalArrowsIcon.classList.add('fa-solid');
         modalArrowsIcon.classList.add('fa-arrows-up-down-left-right');
 
-        const modalCaption = document.createElement('figcaption');
+        const modalCaption = document.createElement('a');
         modalCaption.innerText = 'éditer';
+        modalCaption.href='#';
 
         modalGallery.appendChild(modalFigure);
         modalFigure.appendChild(modalImage);
@@ -267,8 +268,9 @@ function generateModalWork (work) {
     modalArrowsIcon.classList.add('fa-solid');
     modalArrowsIcon.classList.add('fa-arrows-up-down-left-right');
 
-    const modalCaption = document.createElement('figcaption');
+    const modalCaption = document.createElement('a');
     modalCaption.innerText = 'éditer';
+    modalCaption.href='#';
 
     modalGallery.appendChild(modalFigure);
     modalFigure.appendChild(modalImage);
