@@ -179,6 +179,7 @@ function generateIndexGallery (gallery) {
     // iterate index gallery
     for (let i = 0; i < gallery.length; i++) {
         const indexFigure = document.createElement('figure');
+        indexFigure.classList.add('index-figure');
         indexFigure.id = `indexFigure-${gallery[i].id}`;
         
         const indexImage = document.createElement('img');
@@ -199,6 +200,7 @@ function generateIndexWork (work) {
     const indexGallery = document.querySelector('.gallery');
    
     const indexFigure = document.createElement('figure');
+    indexFigure.classList.add('index-figure');
     indexFigure.id = `indexFigure-${work.id}`;
     
     const indexImage = document.createElement('img');
@@ -220,6 +222,7 @@ function generateModalGallery (gallery) {
     // iterate modal gallery
     for (let i = 0; i < gallery.length; i++) {
         const modalFigure = document.createElement('figure');
+        modalFigure.classList.add('modal-figure');
         modalFigure.id = `modalFigure-${gallery[i].id}`;
 
         const modalImage = document.createElement('img');
@@ -229,12 +232,17 @@ function generateModalGallery (gallery) {
         modalTrashIcon.classList.add('fa-solid');
         modalTrashIcon.classList.add('fa-trash');
 
+        const modalArrowsIcon = document.createElement('i');
+        modalArrowsIcon.classList.add('fa-solid');
+        modalArrowsIcon.classList.add('fa-arrows-up-down-left-right');
+
         const modalCaption = document.createElement('figcaption');
         modalCaption.innerText = 'éditer';
 
         modalGallery.appendChild(modalFigure);
         modalFigure.appendChild(modalImage);
         modalFigure.appendChild(modalTrashIcon);
+        modalFigure.appendChild(modalArrowsIcon);
         modalFigure.appendChild(modalCaption);
     }
     modalDeleteWork();
@@ -245,6 +253,7 @@ function generateModalWork (work) {
     const modalGallery = document.querySelector('.modal-gallery');
 
     const modalFigure = document.createElement('figure');
+    modalFigure.classList.add('modal-figure');
     modalFigure.id = `modalFigure-${work.id}`;
 
     const modalImage = document.createElement('img');
@@ -254,12 +263,17 @@ function generateModalWork (work) {
     modalTrashIcon.classList.add('fa-solid');
     modalTrashIcon.classList.add('fa-trash');
 
+    const modalArrowsIcon = document.createElement('i');
+    modalArrowsIcon.classList.add('fa-solid');
+    modalArrowsIcon.classList.add('fa-arrows-up-down-left-right');
+
     const modalCaption = document.createElement('figcaption');
     modalCaption.innerText = 'éditer';
 
     modalGallery.appendChild(modalFigure);
     modalFigure.appendChild(modalImage);
     modalFigure.appendChild(modalTrashIcon);
+    modalFigure.appendChild(modalArrowsIcon);
     modalFigure.appendChild(modalCaption);
 
     modalDeleteWork();
