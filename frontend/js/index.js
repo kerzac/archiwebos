@@ -52,7 +52,7 @@ const logIn = document.getElementById('log-in');
 logIn.addEventListener('click', () => localStorage.clear());
 
 const editions = document.querySelectorAll('.edition');
-if (window.localStorage.getItem('authentication')) {
+if (localStorage.getItem('authentication')) {
     logIn.innerText = 'logout';
     editions.forEach((edition) => edition.classList.remove('hidden'));
 }

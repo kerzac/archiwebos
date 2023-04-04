@@ -22,16 +22,16 @@ logInput.addEventListener('click', async (e) => {
         },
         body: JSON.stringify(user)
     });
-    
+
     const response = postLogin.json()
-    response.then((data) => {
-        window.localStorage.setItem('userId', data.userId);
-        window.localStorage.setItem('token', data.token);
-    });
 
     if (postLogin.ok) {
+        response.then((data) => {
         window.location.href='index.html';
-        window.localStorage.setItem('authentication', true);
+        localStorage.setItem('authentication', true);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('token', data.token);
+        })
     } else {
         alert("Erreur dans l'identifiant ou le mot de passe");
     }
