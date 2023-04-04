@@ -123,8 +123,9 @@ modalFormFile.addEventListener('change', () => {
     if (file) {
         fileContainer.classList.remove('hidden');
         fileContainer.src = URL.createObjectURL(file);
-    }
-})
+    } else if (!file)
+        fileContainer.classList.add('hidden');
+});
 
 const submitPhotoButton = document.querySelector('.submit-photo-button');
 
@@ -137,7 +138,7 @@ submitPhotoButton.addEventListener('click', async (e) => {
     const work = new FormData();
     work.append('image', image),
     work.append('title', title),
-    work.append('category', category)
+    work.append('category', category);
 
     const postWorks = await fetch('http://localhost:5678/api/works', {
         method: 'POST',
@@ -152,6 +153,8 @@ submitPhotoButton.addEventListener('click', async (e) => {
     if (postWorks.ok) {
         generateIndexWork(postWorksResponse);
         generateModalWork(postWorksResponse);
+
+        alert('Photo ajoutée');
     } else {
         alert('Vous devez renseigner tous les champs');
     }
