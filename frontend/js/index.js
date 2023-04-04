@@ -115,6 +115,8 @@ modalBack.addEventListener('click', () => {
 // submit a photo and add it to galleries
 const fileContainer = document.querySelector('#file-container');
 const modalFormFile = document.querySelector('#modal-form-file');
+const modalFormTitle = document.querySelector('#modal-form-title');
+const modalFormCategory = document.querySelector('#modal-form-category');
 
 modalFormFile.addEventListener('change', () => {
     const file = modalFormFile.files[0];
@@ -128,9 +130,9 @@ const submitPhotoButton = document.querySelector('.submit-photo-button');
 
 submitPhotoButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    const image = document.getElementById('modal-form-file').files[0];
-    const title = document.getElementById('modal-form-title').value;
-    const category = parseInt(document.getElementById('modal-form-category').value)
+    const image = modalFormFile.files[0];
+    const title = modalFormTitle.value;
+    const category = parseInt(modalFormCategory.value);
 
     const work = new FormData();
     work.append('image', image),

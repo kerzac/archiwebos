@@ -489,6 +489,15 @@ footer nav ul {
 	border: none;
 }
 
+.submit-photo-button:disabled {
+	background-color: #b9c5cc;
+}
+
+.submit-photo-button:disabled:hover {
+	box-shadow: none;
+	cursor: default;
+}
+
 .delete-all-button {
 	background-color: white;
 	color: #b1663c;
