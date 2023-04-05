@@ -164,6 +164,17 @@ submitPhotoButton.addEventListener('click', async (e) => {
     }
 });
 
+//enable submit button
+submitPhotoButton.disabled = true;
+
+modalFormTitle.addEventListener('keyup', () => {
+    if (modalFormTitle.value.length > 0) {
+        submitPhotoButton.disabled = false;
+    } else {
+        submitPhotoButton.disabled = true;
+    }
+});
+
 /*
     functions
     ---------
