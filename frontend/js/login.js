@@ -30,7 +30,7 @@ logInput.addEventListener('click', async (e) => {
         localStorage.setItem('authentication', true);
         localStorage.setItem('userId', PostLoginResponse.userId);
         localStorage.setItem('token', PostLoginResponse.token);
-    } else {
-        alert("Erreur dans l'identifiant ou le mot de passe");
+    }else {
+        document.querySelector('.login-feedback').style.display = 'inline';
     }
 });

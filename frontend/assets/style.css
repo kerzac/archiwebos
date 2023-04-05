@@ -434,6 +434,20 @@ footer nav ul {
 	box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.09);
 }
 
+.modal-form-feedback {
+	display: none;
+	align-self: center;
+	color: red;
+	font-size: 1.25rem;
+}
+
+.submit-feedback {
+	display: none;
+	align-self: center;
+	color: green;
+	font-size: 1.15rem;
+}
+
 .modal-file-container {
 	position: relative;
 	display: flex;
@@ -557,6 +571,13 @@ footer nav ul {
 
 #login label {
 	margin: 2rem 0 1rem 0;
+}
+
+.login-feedback {
+	display: none;
+	align-self: center;
+	color: red;
+	font-size: 1.5rem;
 }
 
 .forget-password {

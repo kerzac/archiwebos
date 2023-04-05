@@ -5,7 +5,8 @@
 
 // fetch works from api and generate galleries
 const getWorks = await fetch('http://localhost:5678/api/works')
-                        .then((response) => response.json());
+    .then(response => response.json())
+    .catch(err => console.log(err));
 
 generateIndexGallery(getWorks);
 generateModalGallery(getWorks);
@@ -154,9 +155,12 @@ submitPhotoButton.addEventListener('click', async (e) => {
         generateIndexWork(postWorksResponse);
         generateModalWork(postWorksResponse);
 
-        alert('Photo ajoutée');
+        document.querySelector('.submit-feedback').style.display = 'inline';
+        setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 5000)   
+        
     } else {
-        alert('Vous devez renseigner tous les champs');
+        document.querySelector('.modal-form-feedback').style.display = 'inline';
+        setTimeout(() => document.querySelector('.modal-form-feedback').style.display = 'none', 5000)
     }
 });
 
