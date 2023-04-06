@@ -1,9 +1,3 @@
-/*
-    main
-    -----
-*/
-
-// manage login
 const logInput = document.getElementById('log-input');
 
 logInput.addEventListener('click', async (e) => {
@@ -26,11 +20,11 @@ logInput.addEventListener('click', async (e) => {
     const PostLoginResponse = await postLogin.json();
 
     if (postLogin.ok) {
-        window.location.href='index.html';
+        location.href='index.html';
         localStorage.setItem('authentication', true);
         localStorage.setItem('userId', PostLoginResponse.userId);
         localStorage.setItem('token', PostLoginResponse.token);
-    }else {
+    } else {
         document.querySelector('.login-feedback').style.display = 'inline';
     }
 });
