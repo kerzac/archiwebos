@@ -154,11 +154,11 @@ submitPhotoButton.addEventListener('click', async (e) => {
         addModalWork(postWorksResponse);
 
         document.querySelector('.submit-feedback').style.display = 'inline';
-        setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 5000)   
+        setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 5000);
         
     } else {
         document.querySelector('.modal-form-feedback').style.display = 'inline';
-        setTimeout(() => document.querySelector('.modal-form-feedback').style.display = 'none', 5000)
+        setTimeout(() => document.querySelector('.modal-form-feedback').style.display = 'none', 5000);
     }
 });
 
