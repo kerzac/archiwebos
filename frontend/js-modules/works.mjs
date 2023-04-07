@@ -71,7 +71,11 @@ export function generateModalWorks (works) {
        modalFigure.appendChild(modalArrowsIcon);
        modalFigure.appendChild(modalCaption);
    }
-   deleteModalWork();
+   //enable generated works deletion
+   const deleteOnes = document.querySelectorAll('.fa-trash');
+    deleteOnes.forEach((button) => {
+        button.addEventListener('click', modalDeleteWork);
+    });
 }
 /*
     //
@@ -104,31 +108,26 @@ export function addModalWork (work) {
     modalFigure.appendChild(modalArrowsIcon);
     modalFigure.appendChild(modalCaption);
 
-    deleteModalWork();
+    // enable added work deletion
+    modalTrashIcon.addEventListener('click', modalDeleteWork);
 }
 /*
     //
 */
-function deleteModalWork () {
-    const deleteOne = document.querySelectorAll('.fa-trash');
-
-    deleteOne.forEach((button) => {
-        button.addEventListener('click', async (e) => {
-            const modalFigure = e.currentTarget.parentElement;
-            const figureId = modalFigure.id.split('-')[1];
-            const indexFigure = document.getElementById(`indexFigure-${figureId}`);
-            
-            const deleteWork = await fetch(`http://localhost:5678/api/works/${figureId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.token}`
-                }
-            });
-
-            if (deleteWork.ok) {
-                modalFigure.remove();
-                indexFigure.remove();
-            }
-        });
+async function modalDeleteWork (e) {
+    const modalFigure = e.currentTarget.parentElement;
+    const figureId = modalFigure.id.split('-')[1];
+    const indexFigure = document.getElementById(`indexFigure-${figureId}`);
+    
+    const deleteWork = await fetch(`http://localhost:5678/api/works/${figureId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.token}`
+        }
     });
+
+    if (deleteWork.ok) {
+        modalFigure.remove();
+        indexFigure.remove();
+    }
 }

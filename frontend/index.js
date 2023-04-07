@@ -1,6 +1,6 @@
 import { generateIndexWorks,
-        generateModalWorks,
         addIndexWork,
+        generateModalWorks,
         addModalWork } from "./js-modules/works.mjs";
 
 import { switchFilterStyle } from "./js-modules/filters.mjs";
@@ -12,8 +12,7 @@ import { switchFilterStyle } from "./js-modules/filters.mjs";
 
 // fetch works from api and generate works
 const getWorks = await fetch('http://localhost:5678/api/works')
-    .then(response => response.json())
-    .catch(err => console.log(err));
+    .then(response => response.json());
 
 generateIndexWorks(getWorks);
 generateModalWorks(getWorks);
@@ -50,7 +49,6 @@ filterHotel.addEventListener('click', () => {
     switchFilterStyle(filterHotel);
  })
 
-
 // toggle admin acces
 const logIn = document.getElementById('log-in');
 logIn.addEventListener('click', () => localStorage.clear());
@@ -79,20 +77,6 @@ modalOpen.addEventListener('click', () => {
     modalContainerForm.classList.add('hidden');
 });
 
-// close modal
-const modalClose = document.querySelectorAll('.modal-close');
-modalClose.forEach(close => close.addEventListener('click', () => {
-    const modalTarget = document.getElementById('portfolio-modal');
-    modalTarget.classList.add('hidden');
-}));
-
-const modal = document.querySelector('.modal');
-modal.addEventListener('click', (e) => {
-    if(e.target == modal) {
-        modal.classList.add('hidden');
-    }
-});
-
 // display modal form
 const addPhotoButton = document.querySelector('.add-photo-button');
 addPhotoButton.addEventListener('click', () => {
@@ -111,6 +95,19 @@ modalBack.addEventListener('click', () => {
     modalContainerForm.classList.add('hidden');
 });
 
+// close modal
+const modalClose = document.querySelectorAll('.modal-close');
+modalClose.forEach(close => close.addEventListener('click', () => {
+    const modalTarget = document.getElementById('portfolio-modal');
+    modalTarget.classList.add('hidden');
+}));
+
+const modal = document.querySelector('.modal');
+modal.addEventListener('click', (e) => {
+    if(e.target == modal) {
+        modal.classList.add('hidden');
+    }
+});
 
 // submit a photo and add it to portfolio
 const modalFormFile = document.querySelector('#modal-form-file');
@@ -154,11 +151,10 @@ submitPhotoButton.addEventListener('click', async (e) => {
         addModalWork(postWorksResponse);
 
         document.querySelector('.submit-feedback').style.display = 'inline';
-        setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 5000);
-        
+        setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 3500);
     } else {
         document.querySelector('.modal-form-feedback').style.display = 'inline';
-        setTimeout(() => document.querySelector('.modal-form-feedback').style.display = 'none', 5000);
+        setTimeout(() => document.querySelector('.modal-form-feedback').style.display = 'none', 3500);
     }
 });
 
