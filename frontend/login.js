@@ -21,7 +21,6 @@ logInput.addEventListener('click', async (e) => {
 
     if (postLogin.ok) {
         location.href='index.html';
-        localStorage.setItem('authentication', true);
         localStorage.setItem('userId', PostLoginResponse.userId);
         localStorage.setItem('token', PostLoginResponse.token);
     } else {

@@ -50,7 +50,7 @@ filterHotel.addEventListener('click', () => {
  })
 
 // toggle admin acces
-if (localStorage.getItem('authentication') == true) {
+if (localStorage.getItem('userId') == 1) {
     const logIn = document.getElementById('log-in');
     const editions = document.querySelectorAll('.edition'); 
 
