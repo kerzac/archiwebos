@@ -111,7 +111,7 @@ submitPhotoButton.addEventListener('click', async (e) => {
     }
 });
 
-// enable submit button
+// enable/disable submit button
 submitPhotoButton.disabled = true;
 
 modalFormTitle.addEventListener('keyup', () => {
@@ -122,7 +122,7 @@ modalFormTitle.addEventListener('keyup', () => {
     }
 });
 
-// display modal form
+// display modal form / modal gallery
 const addPhotoButton = document.querySelector('.add-photo-button');
 addPhotoButton.addEventListener('click', () => {
     const modalContainerGallery = document.querySelector('.modal-container-gallery');
@@ -131,7 +131,6 @@ addPhotoButton.addEventListener('click', () => {
     modalContainerForm.classList.remove('hidden');
 });
 
-// return back from modal form
 const modalBack = document.querySelector('.modal-back');
 modalBack.addEventListener('click', () => {
     const modalContainerGallery = document.querySelector('.modal-container-gallery');
@@ -140,7 +139,7 @@ modalBack.addEventListener('click', () => {
     modalContainerForm.classList.add('hidden');
 });
 
-// open modal
+// open/close modal
 const modalOpen = document.querySelector('.modal-open');
 modalOpen.addEventListener('click', () => {
     const modalTarget = document.getElementById('portfolio-modal');
@@ -152,7 +151,6 @@ modalOpen.addEventListener('click', () => {
     modalContainerForm.classList.add('hidden');
 });
 
-// close modal
 const modalClose = document.querySelectorAll('.modal-close');
 modalClose.forEach(close => close.addEventListener('click', () => {
     const modalTarget = document.getElementById('portfolio-modal');
