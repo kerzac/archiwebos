@@ -50,12 +50,12 @@ filterHotel.addEventListener('click', () => {
  })
 
 // toggle admin acces
-const logIn = document.getElementById('log-in');
-logIn.addEventListener('click', () => localStorage.clear());
+if (localStorage.getItem('authentication') == true) {
+    const logIn = document.getElementById('log-in');
+    const editions = document.querySelectorAll('.edition'); 
 
-const editions = document.querySelectorAll('.edition');
-if (localStorage.getItem('authentication')) {
     logIn.innerText = 'logout';
+    logIn.addEventListener('click', () => localStorage.clear());
     editions.forEach(edition => edition.classList.remove('hidden'));
     document.querySelector('.gallery-filter').classList.add('hidden');
 }
