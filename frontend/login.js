@@ -26,5 +26,6 @@ logInput.addEventListener('click', async (e) => {
         localStorage.setItem('token', PostLoginResponse.token);
     } else {
         document.querySelector('.login-feedback').style.display = 'inline';
+        setTimeout(() => document.querySelector('.login-feedback').style.display = 'none', 3500);
     }
 });
