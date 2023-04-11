@@ -1,9 +1,6 @@
-import { generateIndexWorks,
-        addIndexWork,
-        generateModalWorks,
-        addModalWork } from "./js-modules/works.mjs";
-
-import { switchFilterStyle } from "./js-modules/filters.mjs";
+import { generateIndexWorks, generateModalWorks } from "./js-modules/works-generate.mjs";
+import { addIndexWork, addModalWork} from "./js-modules/work-add.mjs";
+import { switchFilterStyle } from "./js-modules/filters-style.mjs";
 
 /*
     main
@@ -65,50 +62,6 @@ if (localStorage.getItem('userId') == 1) {
     -----
 */
 
-// open modal
-const modalOpen = document.querySelector('.modal-open');
-modalOpen.addEventListener('click', () => {
-    const modalTarget = document.getElementById('portfolio-modal');
-    modalTarget.classList.remove('hidden');
-
-    const modalContainerGallery = document.querySelector('.modal-container-gallery');
-    modalContainerGallery.classList.remove('hidden');
-    const modalContainerForm = document.querySelector('.modal-container-form');
-    modalContainerForm.classList.add('hidden');
-});
-
-// display modal form
-const addPhotoButton = document.querySelector('.add-photo-button');
-addPhotoButton.addEventListener('click', () => {
-    const modalContainerGallery = document.querySelector('.modal-container-gallery');
-    modalContainerGallery.classList.add('hidden');
-    const modalContainerForm = document.querySelector('.modal-container-form');
-    modalContainerForm.classList.remove('hidden');
-});
-
-// return back from modal form
-const modalBack = document.querySelector('.modal-back');
-modalBack.addEventListener('click', () => {
-    const modalContainerGallery = document.querySelector('.modal-container-gallery');
-    modalContainerGallery.classList.remove('hidden');
-    const modalContainerForm = document.querySelector('.modal-container-form');
-    modalContainerForm.classList.add('hidden');
-});
-
-// close modal
-const modalClose = document.querySelectorAll('.modal-close');
-modalClose.forEach(close => close.addEventListener('click', () => {
-    const modalTarget = document.getElementById('portfolio-modal');
-    modalTarget.classList.add('hidden');
-}));
-
-const modal = document.querySelector('.modal');
-modal.addEventListener('click', (e) => {
-    if(e.target == modal) {
-        modal.classList.add('hidden');
-    }
-});
-
 // submit a photo and add it to portfolio
 const modalFormFile = document.querySelector('#modal-form-file');
 const modalFormTitle = document.querySelector('#modal-form-title');
@@ -166,5 +119,49 @@ modalFormTitle.addEventListener('keyup', () => {
         submitPhotoButton.disabled = false;
     } else {
         submitPhotoButton.disabled = true;
+    }
+});
+
+// display modal form
+const addPhotoButton = document.querySelector('.add-photo-button');
+addPhotoButton.addEventListener('click', () => {
+    const modalContainerGallery = document.querySelector('.modal-container-gallery');
+    modalContainerGallery.classList.add('hidden');
+    const modalContainerForm = document.querySelector('.modal-container-form');
+    modalContainerForm.classList.remove('hidden');
+});
+
+// return back from modal form
+const modalBack = document.querySelector('.modal-back');
+modalBack.addEventListener('click', () => {
+    const modalContainerGallery = document.querySelector('.modal-container-gallery');
+    modalContainerGallery.classList.remove('hidden');
+    const modalContainerForm = document.querySelector('.modal-container-form');
+    modalContainerForm.classList.add('hidden');
+});
+
+// open modal
+const modalOpen = document.querySelector('.modal-open');
+modalOpen.addEventListener('click', () => {
+    const modalTarget = document.getElementById('portfolio-modal');
+    modalTarget.classList.remove('hidden');
+
+    const modalContainerGallery = document.querySelector('.modal-container-gallery');
+    modalContainerGallery.classList.remove('hidden');
+    const modalContainerForm = document.querySelector('.modal-container-form');
+    modalContainerForm.classList.add('hidden');
+});
+
+// close modal
+const modalClose = document.querySelectorAll('.modal-close');
+modalClose.forEach(close => close.addEventListener('click', () => {
+    const modalTarget = document.getElementById('portfolio-modal');
+    modalTarget.classList.add('hidden');
+}));
+
+const modal = document.querySelector('.modal');
+modal.addEventListener('click', (e) => {
+    if(e.target == modal) {
+        modal.classList.add('hidden');
     }
 });
