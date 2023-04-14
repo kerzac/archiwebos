@@ -40,7 +40,7 @@ export function addModalWork (work) {
 
     const modalCaption = document.createElement('a');
     modalCaption.innerText = 'éditer';
-    modalCaption.href='#';
+    modalCaption.href = '#';
 
     modalGallery.appendChild(modalFigure);
     modalFigure.appendChild(modalImage);

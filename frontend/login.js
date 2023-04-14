@@ -20,7 +20,7 @@ logInput.addEventListener('click', async (e) => {
     const postLoginData = await postLogin.json();
 
     if (postLogin.ok) {
-        location.href='index.html';
+        location.href = 'index.html';
         localStorage.setItem('userId', postLoginData.userId);
         localStorage.setItem('token', postLoginData.token);
     } else {
