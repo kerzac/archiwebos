@@ -17,12 +17,12 @@ logInput.addEventListener('click', async (e) => {
         body: JSON.stringify(user)
     });
 
-    const PostLoginResponse = await postLogin.json();
+    const postLoginData = await postLogin.json();
 
     if (postLogin.ok) {
         location.href='index.html';
-        localStorage.setItem('userId', PostLoginResponse.userId);
-        localStorage.setItem('token', PostLoginResponse.token);
+        localStorage.setItem('userId', postLoginData.userId);
+        localStorage.setItem('token', postLoginData.token);
     } else {
         document.querySelector('.login-feedback').style.display = 'inline';
         setTimeout(() => document.querySelector('.login-feedback').style.display = 'none', 3500);

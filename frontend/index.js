@@ -97,11 +97,11 @@ submitPhotoButton.addEventListener('click', async (e) => {
         body: work
     });
 
-    const postWorksResponse = await postWorks.json()
+    const postWorksData = await postWorks.json()
     
     if (postWorks.ok) {
-        addIndexWork(postWorksResponse);
-        addModalWork(postWorksResponse);
+        addIndexWork(postWorksData);
+        addModalWork(postWorksData);
 
         document.querySelector('.submit-feedback').style.display = 'inline';
         setTimeout(() => document.querySelector('.submit-feedback').style.display = 'none', 3500);
