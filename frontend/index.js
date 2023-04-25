@@ -1,6 +1,6 @@
-import { generateIndexWorks, generateModalWorks } from "./js-modules/works-generate.mjs";
-import { addIndexWork, addModalWork} from "./js-modules/work-add.mjs";
-import { switchFilterStyle } from "./js-modules/filters-style.mjs";
+import { generateIndexWorks, generateModalWorks } from "./jsModules/works-generate.mjs";
+import { addIndexWork, addModalWork} from "./jsModules/work-add.mjs";
+import { switchFilterStyle } from "./jsModules/filters-style.mjs";
 
 /*
     main
